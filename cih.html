@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Mountain Adventure</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <nav>
+    <ul>
+      <li><a href="#banner">Home</a></li>
+      <li><a href="#packages">Our Packages</a></li>
+      <li><a href="#call-to-action">Contact Us</a></li>
+    </ul>
+  </nav>
+
+  <section id="banner">
+    <div class="banner-slide">
+      <img src="https://media.istockphoto.com/id/517188688/photo/mountain-landscape.jpg?s=612x612&w=0&k=20&c=A63koPKaCyIwQWOTFBRWXj_PwCrR4cEoOw2S9Q7yVl8=" alt="Mountain Landscape">
+      <img src="https://cdn.pixabay.com/photo/2014/02/27/16/10/flowers-276014__340.jpg" alt="Mountain Landscape">
+      <img src="https://cdn.pixabay.com/photo/2014/02/27/16/10/flowers-276014__340.jpg" alt="Mountain Landscape">
+    </div>
+  </section>
+
+  <section id="packages">
+    <h2>Our Packages</h2>
+    <ul>
+      <li>Package 1</li>
+      <li>Package 2</li>
+      <li>Package 3</li>
+    </ul>
+  </section>
+
+  <section id="call-to-action">
+    <h2>Contact Us</h2>
+    <form action="submit-form.php" method="POST" onsubmit="return validateForm()">
+      <label for="name">Name:</label>
+      <input type="text" id="name" name="name" required>
+
+      <label for="email">Email:</label>
+      <input type="email" id="email" name="email" required>
+
+      <label for="message">Message:</label>
+      <textarea id="message" name="message" required></textarea>
+
+      <button type="submit">Send</button>
+    </form>
+  </section>
+
+  <script>const slides = document.querySelectorAll('#banner .banner-slide img');
+    let currentSlide = 0;
+    
+    function showSlide(n) {
+    slides[currentSlide].style.display = 'none';
+    currentSlide = (n + slides.length) % slides.length;
+    slides[currentSlide].style.display = 'block';
+    }
+    
+    function nextSlide() {
+    showSlide(currentSlide + 1);
+    }
+    
+    setInterval(nextSlide, 3000);
+    
+    function validateForm() {
+    const name = document.getElementById('name').value.trim();
+    const email = document.getElementById('email').value.trim();
+    const message = document.getElementById('message').value.trim();
+    
+    if (name === '') {
+    alert('Name must be filled out');
+    return false;
+    }
+    
+    if (email === '') {
+    alert('Email must be filled out');
+    return false;
+    }
+    
+    if (message === '') {
+    alert('Message must be filled out');
+    return false;
+    }
+    
+    return true;
+    }</script>
+</body>
+</html>
